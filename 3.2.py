@@ -5,6 +5,7 @@
 # @File    : 3.2.py
 # @Software: PyCharm
 #Logistic Regression
+最大化极大似然函数，采用牛顿法进行迭代
 import numpy as np
 import matplotlib.pyplot as plt
 def sigmoid(z):
@@ -36,12 +37,12 @@ def training(x,y):
     epoch = 0
     # Maximize the likelihood function
     while (np.abs(new_likehood-old_likehood)>1e-7):
-        p1 = np.exp(z) / (1 + np.exp(z))  # shape:(17,1)
-        first_order = -np.sum(x * (y - p1), axis=0, keepdims=True)  # shape: (1,3)
+        p1 = np.exp(z) / (1 + np.exp(z))  # shape:(17,1) 中间变量
+        first_order = -np.sum(x * (y - p1), axis=0, keepdims=True)  # shape: (1,3)一阶导
         print(first_order.shape)
         p = np.diag((p1 * (1 - p1)).reshape(num))
 
-        second_order = x.T.dot(p).dot(x)  # shape:(3,3)
+        second_order = x.T.dot(p).dot(x)  # shape:(3,3) #二阶导
 
         beta -= first_order.dot(np.linalg.inv(second_order))
 
