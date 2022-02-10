@@ -4,6 +4,7 @@
 # @Email   : 2021200795@buct.edu.cn
 # @File    : 3.2.py
 # @Software: PyCharm
+#Logistic Regression
 import numpy as np
 import matplotlib.pyplot as plt
 def sigmoid(z):
